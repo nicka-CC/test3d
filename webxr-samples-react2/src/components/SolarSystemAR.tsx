@@ -48,31 +48,31 @@ const SolarSystemAR: React.FC = () => {
     scene.add(light);
 
     // Создаем Солнце
-    const sunGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+    const sunGeometry = new THREE.SphereGeometry(0.2, 32, 32);
     const sunMaterial = new THREE.MeshPhongMaterial({ 
       color: 0xffff00,
       emissive: 0xffff00,
       emissiveIntensity: 0.5
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.position.set(0, 1.5, -1);
     scene.add(sun);
 
-    
     // Создаем планеты
     const planets = [
-      { name: 'Mercury', radius: 0.1, distance: 1, color: 0x888888, speed: 0.01 },
-      { name: 'Venus', radius: 0.15, distance: 1.5, color: 0xe39e1c, speed: 0.008 },
-      { name: 'Earth', radius: 0.2, distance: 2, color: 0x2233ff, speed: 0.006 },
-      { name: 'Mars', radius: 0.15, distance: 2.5, color: 0xc1440e, speed: 0.004 },
-      { name: 'Jupiter', radius: 0.4, distance: 3.5, color: 0xd8ca9d, speed: 0.002 },
-      { name: 'Saturn', radius: 0.35, distance: 4.5, color: 0xead6b8, speed: 0.001 }
+      { name: 'Mercury', radius: 0.04, distance: 0.4, color: 0x888888, speed: 0.01 },
+      { name: 'Venus', radius: 0.06, distance: 0.6, color: 0xe39e1c, speed: 0.008 },
+      { name: 'Earth', radius: 0.08, distance: 0.8, color: 0x2233ff, speed: 0.006 },
+      { name: 'Mars', radius: 0.06, distance: 1.0, color: 0xc1440e, speed: 0.004 },
+      { name: 'Jupiter', radius: 0.16, distance: 1.4, color: 0xd8ca9d, speed: 0.002 },
+      { name: 'Saturn', radius: 0.14, distance: 1.8, color: 0xead6b8, speed: 0.001 }
     ];
 
     const planetMeshes = planets.map(planet => {
       const geometry = new THREE.SphereGeometry(planet.radius, 32, 32);
       const material = new THREE.MeshPhongMaterial({ color: planet.color });
       const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.x = planet.distance;
+      mesh.position.set(planet.distance, 1.5, -1);
       scene.add(mesh);
       return { ...planet, mesh };
     });
@@ -88,8 +88,17 @@ const SolarSystemAR: React.FC = () => {
       });
       const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
       orbit.rotation.x = Math.PI / 2;
+      orbit.position.set(0, 1.5, -1);
       scene.add(orbit);
     });
+
+    // Добавляем дополнительный свет
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
 
     // Обработчик изменения размера окна
     const handleResize = () => {
@@ -106,8 +115,9 @@ const SolarSystemAR: React.FC = () => {
 
       // Вращаем планеты
       planetMeshes.forEach(planet => {
-        planet.mesh.position.x = Math.cos(Date.now() * planet.speed) * planet.distance;
-        planet.mesh.position.z = Math.sin(Date.now() * planet.speed) * planet.distance;
+        const time = Date.now() * planet.speed;
+        planet.mesh.position.x = Math.cos(time) * planet.distance;
+        planet.mesh.position.z = Math.sin(time) * planet.distance - 1;
         planet.mesh.rotation.y += 0.01;
       });
 
