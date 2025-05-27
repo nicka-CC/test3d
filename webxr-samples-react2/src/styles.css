@@ -1,7 +1,28 @@
-body,
-#root,
-.App {
-    height: 100vh;
-    width: 100vw;
+body {
     margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+.ar-button {
+    background: #007AFF !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: background 0.3s ease !important;
+}
+
+.ar-button:hover {
+    background: #0056b3 !important;
 }
