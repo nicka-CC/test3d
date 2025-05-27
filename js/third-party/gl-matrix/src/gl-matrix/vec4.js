@@ -39,10 +39,10 @@ export function clone(a) {
 /**
  * Creates a new vec4 initialized with the given values
  *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
+ * @param {Number} x X components
+ * @param {Number} y Y components
+ * @param {Number} z Z components
+ * @param {Number} w W components
  * @returns {vec4} a new 4D vector
  */
 export function fromValues(x, y, z, w) {
@@ -73,10 +73,10 @@ export function copy(out, a) {
  * Set the components of a vec4 to the given values
  *
  * @param {vec4} out the receiving vector
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
+ * @param {Number} x X components
+ * @param {Number} y Y components
+ * @param {Number} z Z components
+ * @param {Number} w W components
  * @returns {vec4} out
  */
 export function set(out, x, y, z, w) {

@@ -169,12 +169,12 @@ export function rotateZ(out, a, rad) {
 }
 
 /**
- * Calculates the W component of a quat from the X, Y, and Z components.
+ * Calculates the W components of a quat from the X, Y, and Z components.
  * Assumes that quaternion is 1 unit in length.
- * Any existing W component will be ignored.
+ * Any existing W components will be ignored.
  *
  * @param {quat} out the receiving quaternion
- * @param {quat} a quat to calculate W component of
+ * @param {quat} a quat to calculate W components of
  * @returns {quat} out
  */
 export function calculateW(out, a) {
@@ -395,10 +395,10 @@ export const clone = vec4.clone;
 /**
  * Creates a new quat initialized with the given values
  *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
+ * @param {Number} x X components
+ * @param {Number} y Y components
+ * @param {Number} z Z components
+ * @param {Number} w W components
  * @returns {quat} a new quaternion
  * @function
  */
@@ -418,10 +418,10 @@ export const copy = vec4.copy;
  * Set the components of a quat to the given values
  *
  * @param {quat} out the receiving quaternion
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @param {Number} w W component
+ * @param {Number} x X components
+ * @param {Number} y Y components
+ * @param {Number} z Z components
+ * @param {Number} w W components
  * @returns {quat} out
  * @function
  */

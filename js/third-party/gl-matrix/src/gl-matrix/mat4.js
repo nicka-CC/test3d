@@ -956,11 +956,11 @@ export function fromQuat2(out, a) {
 }
 
 /**
- * Returns the translation vector component of a transformation
+ * Returns the translation vector components of a transformation
  *  matrix. If a matrix is built with fromRotationTranslation,
  *  the returned vector will be the same as the translation vector
  *  originally supplied.
- * @param  {vec3} out Vector to receive translation component
+ * @param  {vec3} out Vector to receive translation components
  * @param  {mat4} mat Matrix to be decomposed (input)
  * @return {vec3} out
  */
@@ -973,12 +973,12 @@ export function getTranslation(out, mat) {
 }
 
 /**
- * Returns the scaling factor component of a transformation
+ * Returns the scaling factor components of a transformation
  *  matrix. If a matrix is built with fromRotationTranslationScale
  *  with a normalized Quaternion paramter, the returned vector will be
  *  the same as the scaling vector
  *  originally supplied.
- * @param  {vec3} out Vector to receive scaling factor component
+ * @param  {vec3} out Vector to receive scaling factor components
  * @param  {mat4} mat Matrix to be decomposed (input)
  * @return {vec3} out
  */
@@ -1001,11 +1001,11 @@ export function getScaling(out, mat) {
 }
 
 /**
- * Returns a quaternion representing the rotational component
+ * Returns a quaternion representing the rotational components
  *  of a transformation matrix. If a matrix is built with
  *  fromRotationTranslation, the returned quaternion will be the
  *  same as the quaternion originally supplied.
- * @param {quat} out Quaternion to receive the rotation component
+ * @param {quat} out Quaternion to receive the rotation components
  * @param {mat4} mat Matrix to be decomposed (input)
  * @return {quat} out
  */

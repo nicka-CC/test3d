@@ -255,7 +255,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       // XRReferenceSpace offset is immutable, so return a new reference space
       // that has an updated orientation.
       function getAdjustedRefSpace(refSpace) {
-        // Represent the rotational component of the reference space as a
+        // Represent the rotational components of the reference space as a
         // quaternion.
         let invOrientation = quat.create();
         quat.rotateX(invOrientation, invOrientation, -lookPitch);

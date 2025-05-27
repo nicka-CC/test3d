@@ -50,9 +50,9 @@ export function length(a) {
 /**
  * Creates a new vec3 initialized with the given values
  *
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
+ * @param {Number} x X components
+ * @param {Number} y Y components
+ * @param {Number} z Z components
  * @returns {vec3} a new 3D vector
  */
 export function fromValues(x, y, z) {
@@ -81,9 +81,9 @@ export function copy(out, a) {
  * Set the components of a vec3 to the given values
  *
  * @param {vec3} out the receiving vector
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
+ * @param {Number} x X components
+ * @param {Number} y Y components
+ * @param {Number} z Z components
  * @returns {vec3} out
  */
 export function set(out, x, y, z) {
@@ -469,7 +469,7 @@ export function random(out, scale) {
 
 /**
  * Transforms the vec3 with a mat4.
- * 4th vector component is implicitly '1'
+ * 4th vector components is implicitly '1'
  *
  * @param {vec3} out the receiving vector
  * @param {vec3} a the vector to transform

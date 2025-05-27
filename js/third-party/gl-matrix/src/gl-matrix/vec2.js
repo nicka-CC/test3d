@@ -35,8 +35,8 @@ export function clone(a) {
 /**
  * Creates a new vec2 initialized with the given values
  *
- * @param {Number} x X component
- * @param {Number} y Y component
+ * @param {Number} x X components
+ * @param {Number} y Y components
  * @returns {vec2} a new 2D vector
  */
 export function fromValues(x, y) {
@@ -63,8 +63,8 @@ export function copy(out, a) {
  * Set the components of a vec2 to the given values
  *
  * @param {vec2} out the receiving vector
- * @param {Number} x X component
- * @param {Number} y Y component
+ * @param {Number} x X components
+ * @param {Number} y Y components
  * @returns {vec2} out
  */
 export function set(out, x, y) {
@@ -414,7 +414,7 @@ export function transformMat2d(out, a, m) {
 
 /**
  * Transforms the vec2 with a mat3
- * 3rd vector component is implicitly '1'
+ * 3rd vector components is implicitly '1'
  *
  * @param {vec2} out the receiving vector
  * @param {vec2} a the vector to transform
@@ -431,8 +431,8 @@ export function transformMat3(out, a, m) {
 
 /**
  * Transforms the vec2 with a mat4
- * 3rd vector component is implicitly '0'
- * 4th vector component is implicitly '1'
+ * 3rd vector components is implicitly '0'
+ * 4th vector components is implicitly '1'
  *
  * @param {vec2} out the receiving vector
  * @param {vec2} a the vector to transform

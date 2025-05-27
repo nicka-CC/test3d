@@ -54,14 +54,14 @@ export function clone(a) {
 /**
  * Creates a new dual quat initialized with the given values
  *
- * @param {Number} x1 X component
- * @param {Number} y1 Y component
- * @param {Number} z1 Z component
- * @param {Number} w1 W component
- * @param {Number} x2 X component
- * @param {Number} y2 Y component
- * @param {Number} z2 Z component
- * @param {Number} w2 W component
+ * @param {Number} x1 X components
+ * @param {Number} y1 Y components
+ * @param {Number} z1 Z components
+ * @param {Number} w1 W components
+ * @param {Number} x2 X components
+ * @param {Number} y2 Y components
+ * @param {Number} z2 Z components
+ * @param {Number} w2 W components
  * @returns {quat2} new dual quaternion
  * @function
  */
@@ -81,13 +81,13 @@ export function fromValues(x1, y1, z1, w1, x2, y2, z2, w2) {
 /**
  * Creates a new dual quat from the given values (quat and translation)
  *
- * @param {Number} x1 X component
- * @param {Number} y1 Y component
- * @param {Number} z1 Z component
- * @param {Number} w1 W component
- * @param {Number} x2 X component (translation)
- * @param {Number} y2 Y component (translation)
- * @param {Number} z2 Z component (translation)
+ * @param {Number} x1 X components
+ * @param {Number} y1 Y components
+ * @param {Number} z1 Z components
+ * @param {Number} w1 W components
+ * @param {Number} x2 X components (translation)
+ * @param {Number} y2 Y components (translation)
+ * @param {Number} z2 Z components (translation)
  * @returns {quat2} new dual quaternion
  * @function
  */
@@ -235,14 +235,14 @@ export function identity(out) {
  * Set the components of a dual quat to the given values
  *
  * @param {quat2} out the receiving quaternion
- * @param {Number} x1 X component
- * @param {Number} y1 Y component
- * @param {Number} z1 Z component
- * @param {Number} w1 W component
- * @param {Number} x2 X component
- * @param {Number} y2 Y component
- * @param {Number} z2 Z component
- * @param {Number} w2 W component
+ * @param {Number} x1 X components
+ * @param {Number} y1 Y components
+ * @param {Number} z1 Z components
+ * @param {Number} w1 W components
+ * @param {Number} x2 X components
+ * @param {Number} y2 Y components
+ * @param {Number} z2 Z components
+ * @param {Number} w2 W components
  * @returns {quat2} out
  * @function
  */
@@ -282,7 +282,7 @@ export function getDual(out, a) {
 }
 
 /**
- * Set the real component of a dual quat to the given quaternion
+ * Set the real components of a dual quat to the given quaternion
  *
  * @param {quat2} out the receiving quaternion
  * @param {quat} q a quaternion representing the real part
@@ -292,7 +292,7 @@ export function getDual(out, a) {
 export const setReal = quat.copy;
 
 /**
- * Set the dual component of a dual quat to the given quaternion
+ * Set the dual components of a dual quat to the given quaternion
  *
  * @param {quat2} out the receiving quaternion
  * @param {quat} q a quaternion representing the dual part

@@ -122,7 +122,7 @@ export class InlineViewerHelper {
   // that has an updated orientation.
   get referenceSpace() {
     if (this.dirty) {
-      // Represent the rotational component of the reference space as a
+      // Represent the rotational components of the reference space as a
       // quaternion.
       let invOrient = quat.create();
       quat.rotateX(invOrient, invOrient, -this.lookPitch);
