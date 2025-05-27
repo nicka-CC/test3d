@@ -1,26 +1,40 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { ARButton } from 'three/examples/jsm/webxr/ARButton.js';
+import { ARButton } from 'three/examples/jsm/webxr/ARButton';
 
 const SolarSystemAR: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    // Проверка поддержки WebXR
+    if (!navigator.xr) {
+      setError('Ваш браузер не поддерживает WebXR');
+      return;
+    }
 
     // Создаем сцену
     const scene = new THREE.Scene();
 
     // Создаем камеру
     const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 20);
+    camera.position.set(0, 1.6, 3); // Устанавливаем начальную позицию камеры
 
     // Создаем рендерер
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.xr.enabled = true;
-    containerRef.current.appendChild(renderer.domElement);
-    containerRef.current.appendChild(ARButton.createButton(renderer));
+
+    try {
+      containerRef.current.appendChild(renderer.domElement);
+      containerRef.current.appendChild(ARButton.createButton(renderer));
+    } catch (err) {
+      setError('Ошибка при инициализации AR: ' + (err as Error).message);
+      return;
+    }
 
     // Добавляем свет
     const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
@@ -37,6 +51,7 @@ const SolarSystemAR: React.FC = () => {
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     scene.add(sun);
 
+    
     // Создаем планеты
     const planets = [
       { name: 'Mercury', radius: 0.1, distance: 1, color: 0x888888, speed: 0.01 },
@@ -104,7 +119,26 @@ const SolarSystemAR: React.FC = () => {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: '100%', height: '100vh' }} />;
+  return (
+    <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
+      <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
+      {error && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: 'rgba(255, 0, 0, 0.8)',
+          color: 'white',
+          padding: '20px',
+          borderRadius: '5px',
+          textAlign: 'center'
+        }}>
+          {error}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default SolarSystemAR; 
