@@ -11,16 +11,17 @@ const SolarSystemAR: React.FC = () => {
 
     // Проверка поддержки WebXR
     if (!navigator.xr) {
-      setError('Ваш браузер не поддерживает WebXR');
+      setError('Ваш браузер не поддерживает WebXR. Пожалуйста, используйте Chrome на Android или Safari на iOS.');
       return;
     }
 
     // Создаем сцену
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
 
     // Создаем камеру
     const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 20);
-    camera.position.set(0, 1.6, 3); // Устанавливаем начальную позицию камеры
+    camera.position.set(0, 1.6, 3);
 
     // Создаем рендерер
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -30,7 +31,12 @@ const SolarSystemAR: React.FC = () => {
 
     try {
       containerRef.current.appendChild(renderer.domElement);
-      containerRef.current.appendChild(ARButton.createButton(renderer));
+      const arButton = ARButton.createButton(renderer, {
+        requiredFeatures: ['hit-test'],
+        optionalFeatures: ['dom-overlay'],
+        domOverlay: { root: containerRef.current }
+      });
+      containerRef.current.appendChild(arButton);
     } catch (err) {
       setError('Ошибка при инициализации AR: ' + (err as Error).message);
       return;
